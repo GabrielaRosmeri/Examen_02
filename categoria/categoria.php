@@ -9,6 +9,7 @@
 <body>
     <h1>Gestion Categoria</h1>
     <div><a href="categorianuevo.php">Nuevo</a></div>
+    <div><a href="../index.php">Inicio</a></div> 
     <table>
     <tr>
     <td>N°</td>
@@ -24,7 +25,6 @@
         require '../conectar.php';
         $datos = $conexion->query($sql);
         $i=1;
-        echo '<a href="../index.php">Inicio</a>';
         foreach ($datos as $fila) {
             echo '<tr>';
             echo '<td>' . $i . '</td>';
