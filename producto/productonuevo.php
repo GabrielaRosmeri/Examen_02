@@ -74,7 +74,7 @@
         $sql = 'SELECT C.Codigo, C.Nombre
         FROM categoria C
         Where C.Vigencia = 1
-        ORDER BY C.Nombre';
+        ORDER BY C.Codigo';
         try {
             require 'conectar.php';
             $datos = $conexion->query($sql);

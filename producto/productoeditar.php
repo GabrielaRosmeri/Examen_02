@@ -3,7 +3,6 @@
     $nombre = '';
     $precio = '';
     $negociable = false;
-    $precioM = '';
     $tipo = '';
     $codigoC = '';
     $vigencia = false;
@@ -13,7 +12,7 @@
     if (isset($_GET['cod']) == true) {
         //mostrar datos
         $codigo = $_GET['cod'];
-        $sql = 'SELECT P.Nombre, P.Precio, P.Negociable, P.PrecioMinimo, P.Tipo, P.CodigoCategoria
+        $sql = 'SELECT *
         FROM Producto P WHERE P.Codigo = ' . $codigo;
 
         try {
@@ -22,13 +21,12 @@
             if( $datos == true ){
                 $filas = $datos->fetchAll();
                 if (count($filas) == 1) {
-                    $nombre = $filas[0]['Nombre'];
-                    $precio = $filas[0]['Precio'];
-                    $negociable = $filas[0]['Negociable'];
-                    $precioM = $filas[0]['PrecioMinimo'];
+                    $nombre = $filas[0]['nombre'];
+                    $precio = $filas[0]['precio'];
+                    $negociable = $filas[0]['negociable'];
                     $tipo = $filas[0]['Tipo'];
                     $codigoC= $filas[0]['CodigoCategoria'];
-                    $vigencia = $filas[0]['Vigencia'];
+                    $vigencia = $filas[0]['vigencia'];
                 } else {
                     $msje = 'No se pudo encontrar los datos solicitados';
                 }
@@ -41,35 +39,34 @@
     } else {
         if( isset( $_POST['hCodigo'] ) == true && 
             isset( $_POST['txtNombre'] ) == true &&
-            isset( $_POST['cboNegociable'] ) == true &&
-            isset( $_POST['txtPrecioM'] ) == true &&
-            isset( $_POST['cbotipo'] ) == true &&
-            isset( $_POST['cboCategoria'] ) == true ){
+            isset( $_POST['txtPrecio'] ) == true  ){
 
             $codigo = $_POST['hCodigo'];
             $nombre = $_POST['txtNombre'];
-            $negociable = $_POST['cboNegociable'];
-            $precioM = $_POST['txtPrecioM'];
+            $precio = $_POST['txtPrecio'];
             $tipo = $_POST['cboTipo'];
-            $codigoC = $_POST['cboCategoria'];
     
             if( isset( $_POST['chkVigencia'] ) ==  true){
                 $vigencia = true;
             }
+            if( isset( $_POST['chkNegociable'] ) ==  true){
+                $negociable = true;
+            }
 
-            $sql = 'UPDATE Usuario
-                SET Nombre = \'' . $nombre . '\', Clave = \'' . $clave
-                . '\', CodigoPersonal = ' . $codigoPersonal . ', Vigencia =' . 
+            $sql = 'UPDATE Producto
+                SET Nombre = \'' . $nombre . '\', negociable = ' . ($negociable== true ? 1 : 0) 
+                . ', precio = \''. $precio . '\', tipo =  \''. $tipo . '\', vigencia =' . 
                 ($vigencia == true ? 1 : 0) . '   WHERE Codigo = ' . $codigo;
     
             try{
                 include( 'conectar.php');
                 $cantidad = $conexion->exec($sql);
                 if( $cantidad > 0){
+                    
                     //$msj = 'Personal modificado exitosamnete';
-                    header( 'location:usuario.php');
+                    header( 'location:producto.php');
                 }else{
-                    $msj = 'No se pudo modificar al personal';
+                    $msj = 'No se pudo modificar el producto';
                     
                 }
             }catch(Exception $e){
@@ -94,5 +91,25 @@
 </head>
 <body>
     <h1>Producto Editar</h1>
+    <?php
+        if( $msje != ''){
+            echo '<div>' . $msje . '</div>';
+        }
+    ?>
+    <form action="productoeditar.php" method="post">
+        <input type="hidden" name="hCodigo" value="<?= $codigo ?>">
+       
+        <div>Nombre <input type="text" name="txtNombre" value="<?= $nombre ?>"></div>
+        <div>Precio <input type="number" name="txtPrecio" value="<?= $precio ?>"></div>
+        <div>Negociable <input type="checkbox" name="cboNegociable" value="<?= $negociable ?>"></div>
+        <div>Tipo <select name="cboTipo" id="cboTipo">
+            <option value="B">Bien</option>
+            <option value="S">Servicio</option>
+            </select>
+        <div>Vigencia<input type="checkbox" name="chkVigencia" 
+        <?= ($vigencia == true ? 'checked' : 'unchecked') ?>
+        ></div>
+        <div><input type="submit" name="btnActualizar" value="Actualizar"></div>
+    </form>
 </body>
 </html>

@@ -32,6 +32,8 @@
             echo '<td>' . $fila['DNI'] . '</td>';
             echo '<td><a href="personaleditar.php?cod=' . $fila['Codigo'] .
             '">editar</a></td>';
+            echo '<td><a href="eliminarPersonal.php?cod=' . $fila['Codigo'] .
+            '">eliminar</a></td>';
             echo '</tr>';
             $i++;
         }
