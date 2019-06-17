@@ -9,10 +9,10 @@
 <body>
     <h1>PHP y MySQL</h1>
     <ul>
-    <li><a href="personal.php">Gestion de Personal</a></li>
-    <li><a href="usuario.php">Gestion de Usuario</a></li>
-    <li><a href="categoria.php">Gestion de Categoria</a></li>
-    <li><a href="producto.php">Gestion de Producto</a></li>
+    <li><a href="../personal.php">Gestion de Personal</a></li>
+    <li><a href="../usuario.php">Gestion de Usuario</a></li>
+    <li><a href="../categoria.php">Gestion de Categoria</a></li>
+    <li><a href="../producto.php">Gestion de Producto</a></li>
     </ul>
 </body>
 </html>

@@ -4,7 +4,7 @@ if (isset($_GET['cod'])) {
     $sql = "DELETE FROM personal WHERE personal.codigo='$codigo'";
     try {
        
-        include( 'conectar.php');
+        include( '../conectar.php');
         $cantidad = $conexion->exec($sql);
         if ($cantidad>0) {
             header( 'location:personal.php');
