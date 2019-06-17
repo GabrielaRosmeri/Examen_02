@@ -32,6 +32,8 @@
                         $fila['Nombres'] . '</td>';
                     echo '<td>' . $fila['Nombre'] . '</td>';
                     echo '<td><a href="usuarioeditar.php?cod=' . $fila['Codigo'] . '">Editar</a></td>';
+                    echo '<td><a href="eliminarUsuario.php?cod=' . $fila['Codigo'] .
+                    '">eliminar</a></td>';
                     echo '</tr>';
                     $i++;
                 }
