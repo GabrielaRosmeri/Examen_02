@@ -7,7 +7,7 @@ if (isset($_GET['cod'])) {
         include( '../conectar.php');
         $cantidad = $conexion->exec($sql);
         if ($cantidad>0) {
-            header( 'location:personal.php');
+            header( 'location:categoria.php');
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
