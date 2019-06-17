@@ -14,7 +14,7 @@
         FROM Usuario U WHERE U.Codigo = ' . $codigo;
 
         try {
-            require 'conectar.php';
+            require '../conectar.php';
             $datos = $conexion->query($sql);
             if( $datos == true ){
                 $filas = $datos->fetchAll();
@@ -52,7 +52,7 @@
                 ($vigencia == true ? 1 : 0) . '   WHERE Codigo = ' . $codigo;
     
             try{
-                include( 'conectar.php');
+                include( '../conectar.php');
                 $cantidad = $conexion->exec($sql);
                 if( $cantidad > 0){
                     //$msj = 'Personal modificado exitosamnete';

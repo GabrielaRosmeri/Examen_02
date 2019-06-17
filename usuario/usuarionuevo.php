@@ -17,7 +17,7 @@
         'VALUES(\'' . $nombre . '\', \'' . $clave . '\', ' . $codPersonal . ', 1) ';
 
         try{
-            include( 'conectar.php');
+            include( '../conectar.php');
             $cantidad = $conexion->exec($sql);
             if( $cantidad > 0){
                 // $msj = 'Usuario registrado exitosamente';
@@ -61,7 +61,7 @@
         Where P.Vigencia = 1
         ORDER BY P.apellidoPaterno, P.apellidoMaterno';
         try {
-            require 'conectar.php';
+            require '../conectar.php';
             $datos = $conexion->query($sql);
             $i=1;
             foreach ($datos as $fila){

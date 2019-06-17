@@ -27,7 +27,7 @@
 
         try{
             echo $sql;
-            include( 'conectar.php');
+            include( '../conectar.php');
             $cantidad = $conexion->exec($sql);
             if( $cantidad > 0){
                 // $msj = 'Usuario registrado exitosamente';
@@ -76,7 +76,7 @@
         Where C.Vigencia = 1
         ORDER BY C.Codigo';
         try {
-            require 'conectar.php';
+            require '../conectar.php';
             $datos = $conexion->query($sql);
             foreach ($datos as $fila){
                 ?>

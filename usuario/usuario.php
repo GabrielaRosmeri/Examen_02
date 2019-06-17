@@ -22,7 +22,7 @@
             FROM personal P JOIN usuario U ON P.Codigo = U.CodigoPersonal
             ORDER BY P.ApellidoPaterno, P.ApellidoMaterno';
             try{
-                require 'conectar.php';
+                require '../conectar.php';
                 $datos = $conexion->query($sql);
                 $i=1;
                 foreach ($datos as $fila) {

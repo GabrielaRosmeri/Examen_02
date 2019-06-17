@@ -21,7 +21,7 @@
         C.Vigencia 
     FROM categoria C ORDER BY C.Nombre, C.Descripcion';
     try {
-        require 'conectar.php';
+        require '../conectar.php';
         $datos = $conexion->query($sql);
         $i=1;
         foreach ($datos as $fila) {

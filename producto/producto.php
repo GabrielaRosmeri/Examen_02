@@ -22,7 +22,7 @@
             FROM producto P JOIN categoria C ON C.Codigo = P.CodigoCategoria
             ORDER BY P.Nombre';
             try{
-                require 'conectar.php';
+                require '../conectar.php';
                 $datos = $conexion->query($sql);
                 $i=1;
                 foreach ($datos as $fila) {

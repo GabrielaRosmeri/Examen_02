@@ -21,7 +21,7 @@
     P.ApellidoMaterno, P.DNI, P.Vigencia 
     FROM personal P ORDER BY P.ApellidoPaterno, P.ApellidoMaterno';
     try {
-        require 'conectar.php';
+        require '../conectar.php';
         $datos = $conexion->query($sql);
         $i=1;
         foreach ($datos as $fila) {

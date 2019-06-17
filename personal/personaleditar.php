@@ -18,7 +18,7 @@
         FROM personal P WHERE P.Codigo = ' . $codigo;
 
         try {
-            require 'conectar.php';
+            require '../conectar.php';
             $datos = $conexion->query($sql);
             if( $datos == true ){
                 $filas = $datos->fetchAll();
@@ -69,7 +69,7 @@
 
     try{
         echo $sql;
-        include( 'conectar.php');
+        include( '../conectar.php');
         $cantidad = $conexion->exec($sql);
         if($cantidad > 0){
             //$msje = 'Personal registrado exitosamente';
